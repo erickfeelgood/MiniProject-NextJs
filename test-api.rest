@@ -1,0 +1,30 @@
+@hostname = localhost
+@port = 3000
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+@createdAt = {{$datetime iso8601}}
+@productId = 1
+
+### Get Products
+GET http://{{hostname}}:{{port}}/api/product?page=1&limit=10
+Content-Type: {{contentType}}
+
+### Get Product
+GET http://{{hostname}}:{{port}}/api/product/{{productId}}
+Content-Type: {{contentType}}
+
+### Insert Product
+POST http://{{hostname}}:{{port}}/api/product HTTP/1.1
+Content-Type: {{contentType}}
+
+{
+  "product": {
+    "name": "Puma Ferrari Nitro",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio eos ad autem, nesciunt fugit animi sint veritatis modi beatae voluptates. Totam tenetur perspiciatis nisi? Nesciunt voluptates eum repudiandae distinctio asperiores.",
+    "price": 2499000
+  }
+}
+
+### Delete Product
+DELETE http://{{hostname}}:{{port}}/api/product/{{productId}}
+Content-Type: {{contentType}}
